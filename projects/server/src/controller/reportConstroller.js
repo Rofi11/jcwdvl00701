@@ -297,7 +297,6 @@ module.exports = {
   // endpoint utk kirim email, bentuk post
   emailOrder: async (req, res) => {
     try {
-      //console.log(req.body);
 
       const {
         property,
@@ -314,7 +313,7 @@ module.exports = {
         phoneNumber,
         roomId,
       } = req.body;
-      //console.log(status);
+
       let mail;
       if (status === 3) {
         mail = {

@@ -23,6 +23,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 function CardBooking(props) {
+  console.log(props.email);
   const start = props.start_date.split("T");
   const end = props.end_date.split("T");
   let history = useHistory();
@@ -49,6 +50,7 @@ function CardBooking(props) {
   } = useDisclosure();
 
   async function updateOrder(status) {
+    console.log(status);
     const sentStatus = status === 3 && new Date(props.start_date).toDateString().split('T')[0] === new Date().toDateString().split('T')[0] ? 4 : status
     await axios
       .patch(
@@ -64,7 +66,7 @@ function CardBooking(props) {
         props.randomNumber(Math.random());
         // akan menyimpan endpoint utk kirim email (data yg dikirim akan di buat fleksibel )
 
-        if (sentStatus === 3 || sentStatus === 5) {
+        if (status === 3 || status === 5) {
           axios.post(
             `${process.env.REACT_APP_API_BASE_URL}/report/email-order`,
             {
@@ -78,7 +80,7 @@ function CardBooking(props) {
               email: props.email,
               address: props.address,
               rules: props.rules,
-              status: sentStatus,
+              status: status,
               phoneNumber: props.phoneNumber,
               roomId: props.roomId,
             }

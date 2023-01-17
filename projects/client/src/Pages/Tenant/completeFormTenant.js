@@ -87,10 +87,6 @@ function CompleteFormTenant() {
         .catch((err) => {
           console.error(err.data.message);
         });
-
-      //console.log(response.data);
-      alert(response.data.message);
-
       history.go("/tenant/dashboard");
     },
   });

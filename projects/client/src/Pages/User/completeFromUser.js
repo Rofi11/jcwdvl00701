@@ -62,8 +62,6 @@ function CompleteFormUser() {
                 userId : id
             })
             .then((res) => {
-                //console.log(res.data);
-                alert(res.data.message)
                 history.go("/")
             })
             .catch((err) => {
